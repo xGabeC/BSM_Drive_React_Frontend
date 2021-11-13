@@ -24,7 +24,11 @@ const KeyController = (props) => {
                 sendMotorUpdate(true, 255, 255, true, 255, 255);
             } else if (keys.includes('d')) {
                 sendMotorUpdate(false, 255, 255, false, 255, 255);
-            }else {
+            } else if (keys.includes('r')) {
+                sendMotorUpdate(true, 255, 0, false, 255, 0);
+            } else if (keys.includes('f')) {
+                sendMotorUpdate(false, 255, 0, true, 255, 0);
+            } else {
                 sendMotorUpdate(true, 0,  0, false, 0, 0);
             }
         }
