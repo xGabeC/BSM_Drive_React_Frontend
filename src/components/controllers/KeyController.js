@@ -7,25 +7,25 @@ const KeyController = (props) => {
 
         let keys = [];
 
-        const sendMotorUpdate = (leftDir, leftDutyCycle, rightDir, rightDutyCycle) => {
-            props.socket.emit('motorUpdate', {leftDutyCycle, rightDutyCycle, leftDir, rightDir});
+        const sendMotorUpdate = (leftDir, leftFrontDutyCycle, leftBackDutyCycle, rightDir, rightFrontDutyCycle, rightBackDutyCycle) => {
+            props.socket.emit('motorUpdate', {leftDir, leftFrontDutyCycle, leftBackDutyCycle, rightDir, rightFrontDutyCycle, rightBackDutyCycle});
         }
 
         const updateMotors = () => {
             if (keys.includes('w') && keys.includes('s')) {
-                sendMotorUpdate(true, 0, false, 0);
+                sendMotorUpdate(true, 0, 0, false, 0, 0);
             } else if (keys.includes('d') && keys.includes('a')) {
-                sendMotorUpdate(true, 0, false, 0);
+                sendMotorUpdate(true, 0, 0, false, 0, 0);
             } else if (keys.includes('w')) {
-                sendMotorUpdate(true, 255, false, 255);
+                sendMotorUpdate(true, 255, 255, false, 255, 255);
             } else if (keys.includes('s')) {
-                sendMotorUpdate(false, 255, true, 255);
+                sendMotorUpdate(false, 255, 255, true, 255, 255);
             } else if (keys.includes('a')) {
-                sendMotorUpdate(true, 255, true, 255);
+                sendMotorUpdate(true, 255, 255, true, 255, 255);
             } else if (keys.includes('d')) {
-                sendMotorUpdate(false, 255, false, 255);
+                sendMotorUpdate(false, 255, 255, false, 255, 255);
             }else {
-                sendMotorUpdate(true, 0, false, 0);
+                sendMotorUpdate(true, 0,  0, false, 0, 0);
             }
         }
 
